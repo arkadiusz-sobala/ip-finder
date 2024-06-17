@@ -1,0 +1,13 @@
+.search-container {
+    width: 100%;
+    display: flex;
+
+    &__input {
+        width: 80%;
+    }
+
+    &__button {
+        width: 20%;
+        margin: 0px 10px 0px 20px;
+    }
+}

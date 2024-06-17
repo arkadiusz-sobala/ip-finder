@@ -3,24 +3,24 @@
   </mat-card>
   <div class="page__right-side">
     <div class="page__right-side__user-info">
-      <mat-card firstMap>
+      <mat-card class="page__right-side__user-info__map-container">
+        <map [locationData]="marker"></map>
       </mat-card>
 
-      <mat-card userInfo>
+      <mat-card class="page__right-side__user-info__info-container">
       </mat-card>
     </div>
     <div class="page__right-side__search-bar">
-      <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput
-          type="text">
-      </mat-form-field>
+      <mat-card class="page__right-side__search-bar__container">
+        <search-bar (search)="getIpAddressInfo($event)"></search-bar>
+      </mat-card>
     </div>
     <div class="page__right-side__search-info">
 
-      <mat-card>
+      <mat-card class="page__right-side__search-info__map-container">
+        <map></map>
       </mat-card>
-      <mat-card lastSearchInfo>
+      <mat-card class="page__right-side__search-info__info-container">
       </mat-card>
     </div>
   </div>

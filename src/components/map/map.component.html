@@ -1,5 +1,9 @@
-<div style="height: 300px;"
+<div class="map-container"
+    #map
     leaflet
-    [leafletOptions]="options">
-    <div [leafletLayer]="layer"></div>
+    [leafletOptions]="mapOptions"
+    [leafletZoom]="mapZoom"
+    [leafletCenter]="mapCenter">
+    <div *ngIf="marker"
+        [leafletLayer]="marker"></div>
 </div>
