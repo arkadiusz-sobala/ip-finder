@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
       filter(({ status }) => status !== 'fail'),
       catchError(() => {
         this._handleError();
-        return of(undefined);
+        throw Error;
       })
     );
   }
