@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class IpSearchService {
-  private _ipApiAddress = 'http://ip-api.com/json/';
+  private _ipApiAddress = 'https://ip-api.com/json/';
 
   constructor(private _http: HttpClient) {}
 

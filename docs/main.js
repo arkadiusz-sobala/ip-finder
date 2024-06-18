@@ -254,7 +254,7 @@ __webpack_require__.r(__webpack_exports__);
 class IpSearchService {
     constructor(_http) {
         this._http = _http;
-        this._ipApiAddress = 'http://ip-api.com/json/';
+        this._ipApiAddress = 'https://ip-api.com/json/';
     }
     getAddressInfo(address) {
         const queryAddress = this._ipApiAddress + address.trim();
