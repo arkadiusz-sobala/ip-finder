@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { ipInfoDTO } from 'src/models/ip-info.model';
 
@@ -9,15 +9,8 @@ import { ipInfoDTO } from 'src/models/ip-info.model';
 })
 export class MapComponent {
   @Input() tooltipText = 'This is the marker';
-  mapCenter: L.LatLng;
-  mapZoom: number;
   @Input() set locationData(value: ipInfoDTO) {
-    this.marker = L.marker([value.lat, value.lon], {
-      icon: this._markerIcon,
-    }).bindTooltip('User location');
-
-    this.mapCenter = L.latLng(value.lat, value.lon);
-    this.mapZoom = 12;
+    this._handleLocationDataChange(value);
   }
 
   private _markerIcon = L.icon({
@@ -27,6 +20,8 @@ export class MapComponent {
     tooltipAnchor: [15, -30],
   });
 
+  mapCenter: L.LatLng;
+  mapZoom: number;
   marker: L.Marker<any> | undefined;
   mapOptions: L.MapOptions = {
     layers: [
@@ -40,4 +35,24 @@ export class MapComponent {
   };
 
   constructor() {}
+
+  private _handleLocationDataChange(data: ipInfoDTO): void {
+    if (!data) {
+      this.marker = undefined;
+      return;
+    }
+    this._createMarker(data);
+    this._moveMapToPoint(data);
+  }
+
+  private _createMarker(data: ipInfoDTO): void {
+    this.marker = L.marker([data.lat, data.lon], {
+      icon: this._markerIcon,
+    }).bindTooltip(this.tooltipText);
+  }
+
+  private _moveMapToPoint(data: ipInfoDTO): void {
+    this.mapCenter = L.latLng(data.lat, data.lon);
+    this.mapZoom = 12;
+  }
 }

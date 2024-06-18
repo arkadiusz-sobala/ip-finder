@@ -1,6 +1,11 @@
+:host {
+    height: inherit;
+}
+
 .search-container {
     width: 100%;
     display: flex;
+    height: inherit;
 
     &__input {
         width: 80%;

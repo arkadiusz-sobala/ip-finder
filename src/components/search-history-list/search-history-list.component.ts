@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ipInfoDTO } from 'src/models/ip-info.model';
 
 @Component({
-  selector: 'app-search-history-list',
+  selector: 'search-history-list',
   templateUrl: './search-history-list.component.html',
-  styleUrls: ['./search-history-list.component.scss']
+  styleUrls: ['./search-history-list.component.scss'],
 })
-export class SearchHistoryListComponent implements OnInit {
+export class SearchHistoryListComponent {
+  @Input() list: ipInfoDTO[];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Output() select = new EventEmitter<ipInfoDTO>();
+  constructor() {}
 }

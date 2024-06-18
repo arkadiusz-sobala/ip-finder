@@ -3,8 +3,10 @@
     <mat-form-field class="search-container__input">
         <mat-label>Type in IP or URL address</mat-label>
         <input matInput
+            addressInput
             type="text"
-            [formControl]="searchFieldControl">
+            [formControl]="searchFieldControl"
+            (keyup.enter)="search.emit(searchFieldControl.value)">
     </mat-form-field>
 
     <button mat-raised-button

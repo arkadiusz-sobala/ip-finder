@@ -1,27 +1,51 @@
 <div class="page">
-  <mat-card class="page__list">
-  </mat-card>
+
+  <card class="page__list"
+    headerLabel="Search history">
+    <search-history-list [list]="searchHistory"
+      (select)="searchedAddressInfo = $event"></search-history-list>
+  </card>
+
   <div class="page__right-side">
-    <div class="page__right-side__user-info">
-      <mat-card class="page__right-side__user-info__map-container">
-        <map [locationData]="marker"></map>
-      </mat-card>
+    <div class="page__right-side__address-info margin-b-20">
 
-      <mat-card class="page__right-side__user-info__info-container">
-      </mat-card>
+      <card class="page__right-side__address-info__map-container"
+        headerLabel="Your IP address location">
+        <map class="page__right-side__address-info__map-container__map"
+          tooltipText="Your location"
+          [locationData]="userAddressInfo"></map>
+      </card>
+
+      <card class="page__right-side__address-info__info-container"
+        headerLabel="Your IP address information">
+        <app-location-info class="page__right-side__address-info__info-container__info-table"
+          [addressInfo]="userAddressInfo | addressInfoPipe"></app-location-info>
+      </card>
+
     </div>
+
     <div class="page__right-side__search-bar">
-      <mat-card class="page__right-side__search-bar__container">
-        <search-bar (search)="getIpAddressInfo($event)"></search-bar>
-      </mat-card>
+      <card class="page__right-side__search-bar__container">
+        <search-bar (search)="getAddressInfo($event)"></search-bar>
+      </card>
     </div>
-    <div class="page__right-side__search-info">
 
-      <mat-card class="page__right-side__search-info__map-container">
-        <map></map>
-      </mat-card>
-      <mat-card class="page__right-side__search-info__info-container">
-      </mat-card>
+    <div class="page__right-side__address-info margin-t-20">
+
+      <card class="page__right-side__address-info__map-container"
+        headerLabel="Searched IP address location">
+        <map class="page__right-side__address-info__map-container__map"
+          tooltipText="Searched address location"
+          [locationData]="searchedAddressInfo"></map>
+      </card>
+
+      <card class="page__right-side__address-info__info-container"
+        headerLabel="Searched IP address information">
+        <app-location-info class="page__right-side__address-info__info-container__info-table"
+          [addressInfo]="searchedAddressInfo | addressInfoPipe"
+          [loading]="searchAddressLoading"></app-location-info>
+      </card>
+
     </div>
   </div>
 </div>

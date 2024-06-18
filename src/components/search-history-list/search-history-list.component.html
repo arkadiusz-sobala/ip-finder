@@ -1,1 +1,21 @@
-<p>search-history-list works!</p>
+<cdk-virtual-scroll-viewport *ngIf="list.length; else noItems"
+    class="list-container"
+    [itemSize]="36">
+    <div *cdkVirtualFor="let item of list"
+        class="flex">
+        <button mat-stroked-button
+            class="list-container__item"
+            #tooltip="matTooltip"
+            matTooltipPosition="right"
+            [matTooltip]="item.searchPhrase"
+            (click)="select.emit(item)">
+            <div class="list-container__item__label">
+                {{ item.searchPhrase }}
+            </div>
+        </button>
+    </div>
+</cdk-virtual-scroll-viewport>
+
+<ng-template #noItems>
+    <div class="no-items-message">No items</div>
+</ng-template>

@@ -1,1 +1,18 @@
-<p>location-info works!</p>
+<table *ngIf="!loading; else spinner"
+    class="info-table">
+    <tr *ngFor="let item of addressInfo | keyvalue">
+        <td class="info-table__label">{{ infoLabelMap[item.key] }}:</td>
+        <td>{{ item.value }}</td>
+    </tr>
+</table>
+
+<div *ngIf="!loading && !addressInfo"
+    class="spinner-container">
+    <div>No info available</div>
+</div>
+
+<ng-template #spinner>
+    <div class="spinner-container">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

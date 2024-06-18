@@ -13,4 +13,5 @@ export interface ipInfoDTO {
   status: string;
   timezone: string;
   zip: string;
+  searchPhrase: string;
 }
