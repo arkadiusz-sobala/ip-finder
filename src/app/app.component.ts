@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
   searchAddressLoading: boolean;
   userAddressInfo: ipInfoDTO;
   searchedAddressInfo: ipInfoDTO;
-  searchHistory: any[] = [];
+  searchHistory: ipInfoDTO[] = [];
+
   constructor(
     private _ipSearchService: IpSearchService,
     private _snackBar: MatSnackBar
