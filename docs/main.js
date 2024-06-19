@@ -251,16 +251,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const token = '03AFcWeA7AZ_5_E0BjD243uRaD2EYO5KfojqZgwC9ZIre7_ZtVimeO_K6BQPTmyIPWADc4D56ahsD87KSG-rvG7y5U_w0jwcws5635FblIYAtX-Wgh0GIMjXkE_u6yV9D8bX7vgRS30a0NNpDfxjSz36N0eexv_UXtsfcXdZImM8hBVmwlKq8L6GbSgB8rjBhQMN0DihSo9m_eOYeiV_hY7OVg5fxFssl-c206TVex1YtqRz519HUTfdjdu81gMwppStaBcewe42lT3Tcgb8GTpdJFCfcFixoBByTG6c82ILntSUES7u5bqbRm9cDpltb_vXAQDpVJ1iw-PBtcP5_96SQ0MAfupD-lIMA_tfjVADVBoLycd-T3FFaaOZ4UL7uxssOLYSwFLxAYmFwxzuCcsGSlKJBYGKjZ-FeJEyygtUW0ddVn71HBist-Hb3-H4w-xH2Kb4Sb5zegg3Va8CPu6-hqY0wyxajPDomBtuD2bH2qDzYGyAQasprUIUVhR9PtoOp2arjBvSAE29DYa46AJriGPr1pW6L3M_i91-nmEiXm5mzdqluSupq7bUFu58v2f1kgIetE3iF9PXeLn6jAG2hVrCa-jyOkLcOWMhujMUkccLailPUdkSgwd2Ok4HV5keTuYhuIv6h9z6gdCyyQHK9rHqX8ZKwJg1CaL5EfAlwkAwIT5wmDo88';
 class IpSearchService {
     constructor(_http) {
         this._http = _http;
-        this._ipApiAddress = 'https://ipstack.com/ipstack_api.php';
+        this._ipApiAddress = 'http://ip-api.com/json/';
     }
     getAddressInfo(address) {
-        const queryAddress = this._ipApiAddress;
+        const queryAddress = this._ipApiAddress + address.trim();
         return this._http
-            .get(queryAddress, { params: { ip: address, token } })
+            .get(queryAddress)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])((value) => (Object.assign(Object.assign({}, value), { searchPhrase: address }))));
     }
 }
